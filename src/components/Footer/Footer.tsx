@@ -1,0 +1,29 @@
+import React from 'react';
+import styles from './Footer.module.css';
+import logo2Image from '../../assets/img/logo2.png';
+
+const Footer: React.FC = () => (
+  <footer className={styles.footer}>
+    <div className={styles.content}>
+      <div className={styles.left}>
+        <img src={logo2Image} alt="Jobly Logo" className={styles.logo}/>
+        <p className={styles.text}>
+          We support a pool of diverse young creatives and engineers.
+        </p>
+        <p className={styles.text}>
+          © 2023 Jobly.co Copyright and All rights reserved.
+        </p>
+      </div>
+      <div className={styles.right}>
+        <a href="#" className={styles.link}>
+          Terms and Conditions
+        </a>
+        <a href="#" className={styles.link}>
+          Privacy Policy
+        </a>
+      </div>
+    </div>
+  </footer>
+);
+
+export default Footer;

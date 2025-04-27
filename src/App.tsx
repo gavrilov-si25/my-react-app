@@ -1,15 +1,6 @@
 import React from 'react';
-import Message from './Message';
+import Layout from './Layout';
 
-const messageText = "Message";
-
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <h1>Hello, World!</h1>
-      <Message text={messageText} />
-    </div>
-  );
-};
+const App: React.FC = () => <Layout />;
 
 export default App;
