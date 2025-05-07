@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './Info.module.css';
+import styles from './Card.module.css';
 
 export interface CardData {
+  id: number;
   title: string;
-  description: string;
+  body: string;
   image: string;
 }
 
@@ -14,7 +15,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ data }) => (
   <div className={styles.card}>
     <h3 className={styles.cardTitle}>{data.title}</h3>
-    <p className={styles.cardDescription}>{data.description}</p>
+    <p className={styles.cardDescription}>{data.body}</p>
     <img src={data.image} alt={data.title} className={styles.cardImage} />
   </div>
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Info.module.css';
+import styles from './Feature.module.css';
 import { CardData } from './Card';
 
 interface FeatureProps {
@@ -13,8 +13,8 @@ const Feature: React.FC<FeatureProps> = ({ data, active, onClick }) => (
     className={`${styles.feature} ${active ? styles.featureActive : ''}`}
     onClick={onClick}
   >
-    <h3 className={styles.featureTitle}>{data.title}</h3>
-    <p className={styles.featureText}>{data.description}</p>
+    <h4 className={styles.featureTitle}>{data.title}</h4>
+    <p className={styles.featureText}>{data.body}</p>
   </div>
 );
 
