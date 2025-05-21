@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
-import logoImage from '../../assets/img/logo.svg';
+import logoImage from '/images/logo.svg';
 
 export interface HeaderProps {
   onLoginClick: () => void;

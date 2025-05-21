@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Connect.module.css';
-import connectImage from '../../assets/img/connect-image.png';
+import connectImage from '/images/connect-image.png';
 
 const Connect: React.FC = () => (
   <section className={styles.connect}>

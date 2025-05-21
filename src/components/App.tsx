@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import Quote from './components/Quote/Quote';
-import Info from './components/Info/Info';
-import Connect from './components/Connect/Connect';
-import Slider from './components/Slider/Slider';
-import CTA from './components/CTA/CTA';
-import Footer from './components/Footer/Footer';
-import Modal from './components/Modal/Modal';
-import Preloader from './components/Preloader/Preloader';
+import Layout from './Layout';
+import Header from './Header/Header';
+import Hero from './Hero/Hero';
+import Quote from './Quote/Quote';
+import Info from './Info/Info';
+import Connect from './Connect/Connect';
+import Slider from './Slider/Slider';
+import Join from './Join/Join';
+import Footer from './Footer/Footer';
+import Modal from './Modal/Modal';
+import Preloader from './Preloader/Preloader';
 
-const Layout: React.FC = () => {
+const App: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,26 +33,29 @@ const Layout: React.FC = () => {
     };
   }, []);
 
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
     <>
       <Preloader isLoading={isLoading} />
       {!isLoading && (
         <>
-          <Header onLoginClick={() => setModalOpen(true)} onSignUpClick={() => setModalOpen(true)} />
-          <main className="main">
+          <Header onLoginClick={openModal} onSignUpClick={openModal} />
+          <Layout>
             <Hero />
             <Quote />
             <Info />
             <Connect />
             <Slider />
-            <CTA />
-          </main>
+            <Join />
+          </Layout>
           <Footer />
-          {isModalOpen && <Modal onClose={() => setModalOpen(false)} />}
+          {isModalOpen && <Modal onClose={closeModal} />}
         </>
       )}
     </>
   );
 };
 
-export default Layout;
+export default App;

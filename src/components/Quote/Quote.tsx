@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Quote.module.css';
-import maskImage from '../../assets/img/mask.png';
-import avatarImage from '../../assets/img/avatar.png';
+import maskImage from '/images/mask.png';
+import avatarImage from '/images/avatar.png';
 
 const Quote: React.FC = () => (
   <section className={styles.quote}>

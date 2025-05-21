@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card, { CardData } from './Card';
 import Feature from './Feature';
-import heroImage from '../../assets/img/hero-image.png';
+import heroImage from '/images/hero-image.png';
 import styles from './CardList.module.css';
 
 const CardList: React.FC = () => {
