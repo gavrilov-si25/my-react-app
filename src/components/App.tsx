@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useCallback } from 'react';
 import { Routes, Route } from 'react-router';
 import Preloader from './Preloader/Preloader';
 import Modal from './Modal/Modal';
@@ -26,15 +26,15 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = useCallback(() => setModalOpen(true), []);
+  const closeModal = useCallback(() => setModalOpen(false), []);
 
   return (
     <>
       <Preloader isLoading={isLoading} />
       {!isLoading && (
         <>
-          <Suspense fallback={<Preloader isLoading />}>
+          <Suspense fallback={<Preloader isLoading={true} />}>
             <Routes>
               <Route path="/" element={<HomePage onLoginClick={openModal} onSignUpClick={openModal} />} />
               <Route path="/cards" element={<CardsPage onLoginClick={openModal} onSignUpClick={openModal} />} />

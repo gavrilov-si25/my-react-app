@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router';
+import React, { useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import CardHeader from '../components/Info/CardHeader';
-import CardList from '../components/Info/CardList';
+import CardHeader from '../components/Cards/CardHeader';
+import CardList from '../components/Cards/CardList';
 import Join from '../components/Join/Join';
 
 interface CardsPageProps {
@@ -27,10 +27,10 @@ const CardsPage: React.FC<CardsPageProps> = ({ onLoginClick, onSignUpClick }) =>
     }
   }, [initial, limit, setSearchParams]);
 
-  const changeLimit = (delta: number) => {
+  const changeLimit = useCallback((delta: number) => {
     const newLimit = Math.min(MAX_CARDS, Math.max(MIN_CARDS, limit + delta));
     setSearchParams({ limit: newLimit.toString() });
-  };
+  }, [limit, setSearchParams]);
 
   return (
     <>

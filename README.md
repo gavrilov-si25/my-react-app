@@ -11,3 +11,5 @@ https://www.figma.com/design/u1fHPkVcFOPQjcQq3ZSnmr/Web.Jobly?node-id=0-1&node-t
 Задание 2. - **выполнено**
 
 Задание 3. - **выполнено**
+
+Задание 4. - **выполнено**

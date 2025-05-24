@@ -29,7 +29,11 @@
   background-color: #3D1EDD;
   color: #fff;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #434190;
 }
 
 .button:disabled {

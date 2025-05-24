@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Info.module.css';
 import { Link } from 'react-router';
-import CardList from './CardList';
+import CardList from '../Cards/CardList';
 
 const limit = 3
 
