@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #3D1EDD;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):hover {
+  opacity: 0.9;
+}

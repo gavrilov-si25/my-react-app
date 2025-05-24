@@ -6,6 +6,8 @@ import styles from './Slider.module.css';
 import infoImage from '/images/info-image.png';
 import heroImage from '/images/hero-image.png';
 
+const AUTOPLAY_MS = 7000;
+
 const Slider: React.FC = () => (
   <section className={styles.slider}>
     <h3 className={styles.title}>Connect With Slider</h3>
@@ -15,7 +17,7 @@ const Slider: React.FC = () => (
     </p>
 
     <div className={styles.sliderArea}>
-      <Swiper modules={[Autoplay]} slidesPerView={1} spaceBetween={0} loop autoplay={{ delay: 7000, disableOnInteraction: false }} className={styles.container}>
+      <Swiper modules={[Autoplay]} slidesPerView={1} spaceBetween={0} loop autoplay={{ delay: AUTOPLAY_MS, disableOnInteraction: false }} className={styles.container}>
         <SwiperSlide>
           <img src={infoImage} alt="Slide 1" />
         </SwiperSlide>
@@ -27,4 +29,4 @@ const Slider: React.FC = () => (
   </section>
 );
 
-export default Slider;
+export default React.memo(Slider);

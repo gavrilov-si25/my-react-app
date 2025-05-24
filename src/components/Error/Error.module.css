@@ -1,0 +1,20 @@
+.header {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: #3D1EDD;
+}

@@ -9,3 +9,8 @@
   color: #333;
   margin-bottom: 2.5rem;
 }
+
+.titleLink {
+  text-decoration: none;
+  color: #3D1EDD;
+}

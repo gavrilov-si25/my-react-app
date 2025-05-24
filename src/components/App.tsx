@@ -1,36 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import Layout from './Layout';
-import Header from './Header/Header';
-import Hero from './Hero/Hero';
-import Quote from './Quote/Quote';
-import Info from './Info/Info';
-import Connect from './Connect/Connect';
-import Slider from './Slider/Slider';
-import Join from './Join/Join';
-import Footer from './Footer/Footer';
-import Modal from './Modal/Modal';
+import React, { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router';
 import Preloader from './Preloader/Preloader';
+import Modal from './Modal/Modal';
+
+const HomePage = lazy(() => import('../pages/HomePage'));
+const CardsPage = lazy(() => import('../pages/CardsPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+
+const IS_LOADING_MS = 500;
 
 const App: React.FC = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setModalOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleContentLoaded = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
+      setTimeout(() => setIsLoading(false), IS_LOADING_MS);
     };
 
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       handleContentLoaded();
     } else {
       document.addEventListener('DOMContentLoaded', handleContentLoaded);
+      return () => document.removeEventListener('DOMContentLoaded', handleContentLoaded);
     }
-
-    return () => {
-      document.removeEventListener('DOMContentLoaded', handleContentLoaded);
-    };
   }, []);
 
   const openModal = () => setModalOpen(true);
@@ -41,16 +34,13 @@ const App: React.FC = () => {
       <Preloader isLoading={isLoading} />
       {!isLoading && (
         <>
-          <Header onLoginClick={openModal} onSignUpClick={openModal} />
-          <Layout>
-            <Hero />
-            <Quote />
-            <Info />
-            <Connect />
-            <Slider />
-            <Join />
-          </Layout>
-          <Footer />
+          <Suspense fallback={<Preloader isLoading />}>
+            <Routes>
+              <Route path="/" element={<HomePage onLoginClick={openModal} onSignUpClick={openModal} />} />
+              <Route path="/cards" element={<CardsPage onLoginClick={openModal} onSignUpClick={openModal} />} />
+              <Route path="*" element={<NotFoundPage onLoginClick={openModal} onSignUpClick={openModal} />} />
+            </Routes>
+          </Suspense>
           {isModalOpen && <Modal onClose={closeModal} />}
         </>
       )}
