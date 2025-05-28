@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import Layout from '../components/Layout';
+import { useSearchParams } from 'react-router';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import CardHeader from '../components/Cards/CardHeader';
@@ -35,11 +34,9 @@ const CardsPage: React.FC<CardsPageProps> = ({ onLoginClick, onSignUpClick }) =>
   return (
     <>
       <Header onLoginClick={onLoginClick} onSignUpClick={onSignUpClick} />
-      <Layout>
-        <CardHeader limit={limit} onAdd={() => changeLimit(1)} onRemove={() => changeLimit(-1)}/>
-        <CardList limit={limit} />
-        <Join />
-      </Layout>
+      <CardHeader limit={limit} onAdd={() => changeLimit(1)} onRemove={() => changeLimit(-1)}/>
+      <CardList limit={limit} />
+      <Join />
       <Footer />
     </>
   );

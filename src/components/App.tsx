@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useCallback } from 'react';
 import { Routes, Route } from 'react-router';
 import Preloader from './Preloader/Preloader';
 import Modal from './Modal/Modal';
+import Layout from './Layout';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const CardsPage = lazy(() => import('../pages/CardsPage'));
@@ -36,9 +37,11 @@ const App: React.FC = () => {
         <>
           <Suspense fallback={<Preloader isLoading={true} />}>
             <Routes>
-              <Route path="/" element={<HomePage onLoginClick={openModal} onSignUpClick={openModal} />} />
-              <Route path="/cards" element={<CardsPage onLoginClick={openModal} onSignUpClick={openModal} />} />
-              <Route path="*" element={<NotFoundPage onLoginClick={openModal} onSignUpClick={openModal} />} />
+              <Route element={<Layout />} >
+                <Route path="/" element={<HomePage onLoginClick={openModal} onSignUpClick={openModal} />} />
+                <Route path="/cards" element={<CardsPage onLoginClick={openModal} onSignUpClick={openModal} />} />
+                <Route path="*" element={<NotFoundPage onLoginClick={openModal} onSignUpClick={openModal} />} />
+              </Route>
             </Routes>
           </Suspense>
           {isModalOpen && <Modal onClose={closeModal} />}
