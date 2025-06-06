@@ -1,26 +1,21 @@
 import React from 'react';
-import Header, { HeaderProps } from '../components/Header/Header';
+import PageTemplate from '../components/PageTemplate';
 import Hero from '../components/Hero/Hero';
 import Quote from '../components/Quote/Quote';
 import Info from '../components/Info/Info';
 import Connect from '../components/Connect/Connect';
 import Slider from '../components/Slider/Slider';
-import Join from '../components/Join/Join';
-import Footer from '../components/Footer/Footer';
 
-interface HomePageProps extends HeaderProps {}
+type HomePageProps = React.ComponentProps<typeof PageTemplate>;
 
 const HomePage: React.FC<HomePageProps> = ({ onLoginClick, onSignUpClick }) => (
-  <>
-    <Header onLoginClick={onLoginClick} onSignUpClick={onSignUpClick} />
+  <PageTemplate onLoginClick={onLoginClick} onSignUpClick={onSignUpClick}>
     <Hero />
     <Quote />
     <Info />
     <Connect />
     <Slider />
-    <Join />
-    <Footer />
-  </>
+  </PageTemplate>
 );
 
 export default HomePage;

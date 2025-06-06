@@ -1,6 +1,6 @@
 .join {
   padding: 0;
-  background-color: #0C0909;
+  background-color: #0c0909;
 }
 
 .content {
@@ -20,14 +20,14 @@
 
 .title {
   font-size: 2.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 1.25rem;
 }
 
 .button {
   display: inline-block;
   padding: 0.625rem 1.25rem;
-  background-color: #3D1EDD;
+  background-color: #3d1edd;
   color: #fff;
   border-radius: 0.25rem;
   text-decoration: none;
@@ -37,7 +37,6 @@
   max-width: 10rem;
   text-align: center;
 }
-
 
 .button:hover {
   background-color: #434190;

@@ -22,7 +22,7 @@
   width: 3.125rem;
   height: 3.125rem;
   border: 0.3125rem solid #ccc;
-  border-top: 0.3125rem solid #3D1EDD;
+  border-top: 0.3125rem solid #3d1edd;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

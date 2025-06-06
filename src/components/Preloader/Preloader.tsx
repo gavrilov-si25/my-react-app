@@ -5,6 +5,8 @@ interface PreloaderProps {
   isLoading: boolean;
 }
 
+const HIDE_DELAY_MS = 500;
+
 const Preloader: React.FC<PreloaderProps> = ({ isLoading }) => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -12,7 +14,7 @@ const Preloader: React.FC<PreloaderProps> = ({ isLoading }) => {
     if (!isLoading) {
       const timer = setTimeout(() => {
         setIsVisible(false);
-      }, 500);
+      }, HIDE_DELAY_MS);
 
       return () => clearTimeout(timer);
     }

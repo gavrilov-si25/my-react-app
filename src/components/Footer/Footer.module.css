@@ -1,8 +1,8 @@
 .footer {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   color: #000;
   padding: 20px 0;
-  border-top: 1px solid #FAFAFA;
+  border-top: 1px solid #fafafa;
 }
 
 .content {
@@ -52,11 +52,11 @@
 }
 
 .link:hover {
-  color: #3D1EDD;
+  color: #3d1edd;
 }
 
 .link:nth-child(1)::after {
-  content: "•";
+  content: '•';
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -68,4 +68,3 @@
     gap: 1.25rem;
   }
 }
-  

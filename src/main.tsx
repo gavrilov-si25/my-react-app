@@ -5,11 +5,10 @@ import App from './components/App';
 import './assets/styles/normalize.css';
 import './assets/styles/global.css';
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

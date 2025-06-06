@@ -1,26 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useFetch } from '../../hooks/useFetch';
-import Card, { CardData } from './Card';
+import Card from './Card';
 import Feature from './Feature';
 import heroImage from '/images/hero-image.png';
 import styles from './CardList.module.css';
-
-interface RawCard {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { CardData, RawCard } from '../../types/post.ts';
 
 interface CardListProps {
   limit?: number;
 }
 
-const CardList: React.FC<CardListProps> = ({ limit = 3 }) => {
-  const { data: rawCards, loading, error } = useFetch<RawCard[]>(
-    `https://jsonplaceholder.typicode.com/posts?_limit=${limit}`
-  );
+const DEFAULT_CARD_LIMIT = 3;
+
+const CardList: React.FC<CardListProps> = React.memo(({ limit = DEFAULT_CARD_LIMIT }) => {
+  const {
+    data: rawCards,
+    loading,
+    error,
+  } = useFetch<RawCard[]>(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`);
   const [activeIdx, setActiveIdx] = useState(0);
+
+  const cards: CardData[] = useMemo(
+    () =>
+      rawCards
+        ? rawCards.map(item => ({
+            id: item.id,
+            title: item.title,
+            body: item.body,
+            image: heroImage,
+          }))
+        : [],
+    [rawCards],
+  );
+
+  const handlers: Array<() => void> = useMemo(() => cards.map((_, idx) => () => setActiveIdx(idx)), [cards]);
 
   useEffect(() => {
     if (!loading && rawCards) {
@@ -32,15 +45,8 @@ const CardList: React.FC<CardListProps> = ({ limit = 3 }) => {
   }, [rawCards, loading, activeIdx]);
 
   if (loading) return <p className={styles.status}>Loading..</p>;
-  if (error)   return <p className={styles.status}>Error: {error}</p>;
+  if (error) return <p className={styles.status}>Error: {error}</p>;
   if (!rawCards || rawCards.length === 0) return <p className={styles.status}>No cards</p>;
-
-  const cards: CardData[] = rawCards.map(item => ({
-    id: item.id,
-    title: item.title,
-    body: item.body,
-    image: heroImage,
-  }));
 
   const safeIdx = Math.min(activeIdx, cards.length - 1);
 
@@ -51,16 +57,11 @@ const CardList: React.FC<CardListProps> = ({ limit = 3 }) => {
       </div>
       <div className={styles.featuresSlider}>
         {cards.map((c, i) => (
-          <Feature
-            key={c.id}
-            data={c}
-            active={i === safeIdx}
-            onClick={() => setActiveIdx(i)}
-          />
+          <Feature key={c.id} data={c} active={i === safeIdx} onClick={handlers[i]} />
         ))}
       </div>
     </div>
   );
-};
+});
 
-export default React.memo(CardList);
+export default CardList;

@@ -1,21 +1,13 @@
 import React from 'react';
-import Header, { HeaderProps } from '../components/Header/Header';
-import Join from '../components/Join/Join';
-import Footer from '../components/Footer/Footer';
+import PageTemplate from '../components/PageTemplate';
 import Error from '../components/Error/Error';
 
-interface NotFoundPageProps extends HeaderProps {}
+type NotFoundPageProps = React.ComponentProps<typeof PageTemplate>;
 
-const NotFoundPage: React.FC<NotFoundPageProps> = ({ onLoginClick, onSignUpClick }) => {
-
-  return (
-    <>
-      <Header onLoginClick={onLoginClick} onSignUpClick={onSignUpClick} />
-      <Error />
-      <Join />
-      <Footer />
-    </>
-  );
-};
+const NotFoundPage: React.FC<NotFoundPageProps> = ({ onLoginClick, onSignUpClick }) => (
+  <PageTemplate onLoginClick={onLoginClick} onSignUpClick={onSignUpClick}>
+    <Error />
+  </PageTemplate>
+);
 
 export default NotFoundPage;
