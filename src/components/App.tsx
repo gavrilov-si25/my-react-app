@@ -1,7 +1,8 @@
-import React, { Suspense, lazy, useCallback, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router';
 import Preloader from './Preloader/Preloader';
 import Modal from './Modal/Modal';
+import { useModal } from '../hooks/useModal';
 import Layout from './Layout';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
@@ -10,13 +11,11 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 const IS_LOADING_MS = 500;
 
-type ModalMode = 'login' | 'register';
-
 const App: React.FC = () => {
-  const [modalMode, setModalMode] = useState<ModalMode | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { mode: modalMode, isOpen, openLogin, openRegister, close } = useModal();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleContentLoaded = () => {
       setTimeout(() => setIsLoading(false), IS_LOADING_MS);
     };
@@ -29,18 +28,6 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const openLoginModal = useCallback(() => {
-    setModalMode('login');
-  }, []);
-
-  const openRegisterModal = useCallback(() => {
-    setModalMode('register');
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setModalMode(null);
-  }, []);
-
   return (
     <>
       <Preloader isLoading={isLoading} />
@@ -49,22 +36,13 @@ const App: React.FC = () => {
           <Suspense fallback={<Preloader isLoading={true} />}>
             <Routes>
               <Route element={<Layout />}>
-                <Route
-                  path="/"
-                  element={<HomePage onLoginClick={openLoginModal} onSignUpClick={openRegisterModal} />}
-                />
-                <Route
-                  path="/cards"
-                  element={<CardsPage onLoginClick={openLoginModal} onSignUpClick={openRegisterModal} />}
-                />
-                <Route
-                  path="*"
-                  element={<NotFoundPage onLoginClick={openLoginModal} onSignUpClick={openRegisterModal} />}
-                />
+                <Route path="/" element={<HomePage onLoginClick={openLogin} onSignUpClick={openRegister} />} />
+                <Route path="/cards" element={<CardsPage onLoginClick={openLogin} onSignUpClick={openRegister} />} />
+                <Route path="*" element={<NotFoundPage onLoginClick={openLogin} onSignUpClick={openRegister} />} />
               </Route>
             </Routes>
           </Suspense>
-          {modalMode && <Modal onClose={closeModal} mode={modalMode} />}
+          {isOpen && <Modal onClose={close} mode={modalMode!} />}
         </>
       )}
     </>

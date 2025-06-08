@@ -11,7 +11,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/parser": "^7.27.5",
+    "@babel/traverse": "^7.27.4",
     "@reduxjs/toolkit": "^2.8.2",
+    "fs": "^0.0.1-security",
+    "glob": "^11.0.2",
+    "path": "^0.12.7",
+    "postcss": "^8.5.4",
+    "postcss-scss": "^4.0.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.57.0",

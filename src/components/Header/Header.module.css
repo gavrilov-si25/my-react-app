@@ -17,6 +17,10 @@
   height: 2.5rem;
 }
 
+.logo {
+  display: flex;
+}
+
 .nav {
   display: flex;
   align-items: center;
