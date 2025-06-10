@@ -1,17 +1,37 @@
-import { useState, useCallback } from 'react';
+import { useReducer, useCallback } from 'react';
 
-export type ModalMode = 'login' | 'register';
+export enum ModalMode {
+  Login = 'login',
+  Register = 'register',
+}
+
+type ModalAction = { type: 'OPEN'; mode: ModalMode } | { type: 'CLOSE' };
+
+type ModalState = {
+  mode: ModalMode | null;
+};
+
+function modalReducer(state: ModalState, action: ModalAction): ModalState {
+  switch (action.type) {
+    case 'OPEN':
+      return { ...state, mode: action.mode };
+    case 'CLOSE':
+      return { ...state, mode: null };
+    default:
+      return state;
+  }
+}
 
 export function useModal() {
-  const [mode, setMode] = useState<ModalMode | null>(null);
+  const [state, dispatch] = useReducer(modalReducer, { mode: null });
 
-  const openLogin = useCallback(() => setMode('login'), []);
-  const openRegister = useCallback(() => setMode('register'), []);
-  const close = useCallback(() => setMode(null), []);
+  const openLogin = useCallback(() => dispatch({ type: 'OPEN', mode: ModalMode.Login }), []);
+  const openRegister = useCallback(() => dispatch({ type: 'OPEN', mode: ModalMode.Register }), []);
+  const close = useCallback(() => dispatch({ type: 'CLOSE' }), []);
 
   return {
-    mode,
-    isOpen: mode !== null,
+    mode: state.mode,
+    isOpen: state.mode !== null,
     openLogin,
     openRegister,
     close,

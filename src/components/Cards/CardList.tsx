@@ -44,7 +44,9 @@ const CardList: React.FC<CardListProps> = React.memo(({ limit = DEFAULT_CARD_LIM
     }
   }, [rawCards, loading, activeIdx]);
 
-  if (loading) return <p className={styles.status}>Loading..</p>;
+  if (loading && (!rawCards || rawCards.length === 0)) {
+    return <p className={styles.status}>Loading..</p>;
+  }
   if (error) return <p className={styles.status}>Error: {error}</p>;
   if (!rawCards || rawCards.length === 0) return <p className={styles.status}>No cards</p>;
 
