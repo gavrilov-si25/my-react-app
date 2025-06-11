@@ -50,10 +50,15 @@ https://www.figma.com/design/u1fHPkVcFOPQjcQq3ZSnmr/Web.Jobly?node-id=0-1&node-t
 
 ```
 .
+├── .gitignore
+├── .prettierignore
+├── .prettierrc.json
+├── .vscode
+│   └── settings.json
 ├── README.md
 ├── eslint.config.js
 ├── index.html
-├── jest.config.js
+├── jest.config.cjs
 ├── package-lock.json
 ├── package.json
 ├── public
