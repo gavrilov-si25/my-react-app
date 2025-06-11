@@ -26,11 +26,12 @@ describe('useFetch hook', () => {
     jest.resetAllMocks();
   });
 
-  it('инициализируется с loading=true, data=null, error=null', () => {
+  it('инициализируется с loading=true, data=null, error=null', async () => {
     const { result } = renderHook(() => useFetch<TestData>(url));
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBeNull();
     expect(result.current.error).toBeNull();
+    await waitFor(() => expect(result.current.loading).toBe(false));
   });
 
   it('при успешном запросе устанавливает data и сбрасывает loading', async () => {

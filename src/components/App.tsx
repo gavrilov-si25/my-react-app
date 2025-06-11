@@ -1,17 +1,17 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router';
-import Preloader from './Preloader/Preloader';
-import Modal from './Modal/Modal';
+import { Preloader } from './Preloader/Preloader';
+import { Modal } from './Modal/Modal';
 import { useModal } from '../hooks/useModal';
-import Layout from './Layout';
+import { Layout } from './Layout';
 
-const HomePage = lazy(() => import('../pages/HomePage'));
-const CardsPage = lazy(() => import('../pages/CardsPage'));
-const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const HomePage = lazy(() => import('../pages/HomePage').then(module => ({ default: module.HomePage })));
+const CardsPage = lazy(() => import('../pages/CardsPage').then(module => ({ default: module.CardsPage })));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage').then(module => ({ default: module.NotFoundPage })));
 
 const IS_LOADING_MS = 500;
 
-const App: React.FC = () => {
+export const App = (): React.ReactElement => {
   const [isLoading, setIsLoading] = useState(true);
   const { mode: modalMode, isOpen, openLogin, openRegister, close } = useModal();
 
@@ -48,5 +48,3 @@ const App: React.FC = () => {
     </>
   );
 };
-
-export default App;

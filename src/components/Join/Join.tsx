@@ -1,9 +1,8 @@
-import React from 'react';
+import { Link } from 'react-router';
 import styles from './Join.module.css';
 import jobImage from '/images/job-image.png';
-import { Link } from 'react-router';
 
-const Join: React.FC = () => (
+export const Join = (): React.ReactElement => (
   <section className={styles.join}>
     <div className={styles.content}>
       <div className={styles.text}>
@@ -18,5 +17,3 @@ const Join: React.FC = () => (
     </div>
   </section>
 );
-
-export default Join;

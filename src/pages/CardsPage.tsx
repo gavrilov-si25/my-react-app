@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router';
-import PageTemplate from '../components/PageTemplate';
-import CardHeader from '../components/Cards/CardHeader';
-import CardList from '../components/Cards/CardList';
+import { PageTemplate } from '../components/PageTemplate';
+import { CardHeader } from '../components/Cards/CardHeader';
+import { CardList } from '../components/Cards/CardList';
 
 type CardsPageProps = React.ComponentProps<typeof PageTemplate>;
 
@@ -10,7 +10,7 @@ const MIN_CARDS = 1;
 const MAX_CARDS = 50;
 const DEFAULT_CARDS = 10;
 
-const CardsPage: React.FC<CardsPageProps> = ({ onLoginClick, onSignUpClick }) => {
+export const CardsPage = ({ onLoginClick, onSignUpClick }: CardsPageProps): React.ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
   const raw = parseInt(searchParams.get('limit') || '', 10);
   const initial = Number.isNaN(raw) ? DEFAULT_CARDS : raw;
@@ -37,5 +37,3 @@ const CardsPage: React.FC<CardsPageProps> = ({ onLoginClick, onSignUpClick }) =>
     </PageTemplate>
   );
 };
-
-export default CardsPage;

@@ -1,13 +1,12 @@
-import React from 'react';
-import SliderTemplate from '../SliderTemplate';
+import { Link } from 'react-router';
+import { SliderTemplate } from '../SliderTemplate';
 import styles from './Hero.module.css';
 import heroImage from '/images/hero-image.png';
 import infoImage from '/images/info-image.png';
-import { Link } from 'react-router';
 
 const AUTOPLAY_MS = 7000;
 
-const Hero: React.FC = () => {
+export const Hero = (): React.ReactElement => {
   const slides = [
     { src: heroImage, alt: 'Hero', className: styles.image },
     { src: infoImage, alt: 'Info', className: styles.image },
@@ -36,7 +35,7 @@ const Hero: React.FC = () => {
           <SliderTemplate
             images={slides}
             autoplayDelay={AUTOPLAY_MS}
-            loop={true}
+            loop
             spaceBetween={0}
             className={`${styles.swiper} swiper`}
           />
@@ -45,5 +44,3 @@ const Hero: React.FC = () => {
     </section>
   );
 };
-
-export default Hero;

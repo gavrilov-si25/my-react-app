@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import styles from './Modal.module.css';
 
@@ -16,7 +15,7 @@ interface ModalFormValues {
 const MIN_NAME_LENGTH = 2;
 const MIN_PASSWORD_LENGTH = 6;
 
-const Modal: React.FC<ModalProps> = ({ onClose, mode }) => {
+export const Modal = ({ onClose, mode }: ModalProps): React.ReactElement => {
   const {
     register,
     handleSubmit,
@@ -114,5 +113,3 @@ const Modal: React.FC<ModalProps> = ({ onClose, mode }) => {
     </div>
   );
 };
-
-export default Modal;

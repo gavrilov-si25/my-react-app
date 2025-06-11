@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Preloader.module.css';
 
-interface PreloaderProps {
+export interface PreloaderProps {
   isLoading: boolean;
 }
 
 const HIDE_DELAY_MS = 500;
 
-const Preloader: React.FC<PreloaderProps> = ({ isLoading }) => {
+export const Preloader = ({ isLoading }: PreloaderProps): React.ReactElement | null => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ const Preloader: React.FC<PreloaderProps> = ({ isLoading }) => {
       const timer = setTimeout(() => {
         setIsVisible(false);
       }, HIDE_DELAY_MS);
-
       return () => clearTimeout(timer);
     }
   }, [isLoading]);
@@ -26,9 +25,7 @@ const Preloader: React.FC<PreloaderProps> = ({ isLoading }) => {
 
   return (
     <div className={`${styles.preloader} ${!isLoading ? styles.hidden : ''}`}>
-      <div className={styles.spinner}></div>
+      <div className={styles.spinner} />
     </div>
   );
 };
-
-export default Preloader;

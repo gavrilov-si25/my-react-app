@@ -1,12 +1,11 @@
-import React from 'react';
-import SliderTemplate from '../SliderTemplate';
+import { SliderTemplate } from '../SliderTemplate';
 import styles from './Slider.module.css';
 import heroImage from '/images/hero-image.png';
 import infoImage from '/images/info-image.png';
 
 const AUTOPLAY_MS = 7000;
 
-const Slider: React.FC = () => {
+export const Slider = (): React.ReactElement => {
   const slides = [
     { src: heroImage, alt: 'Hero', className: styles.image },
     { src: infoImage, alt: 'Info', className: styles.image },
@@ -23,7 +22,7 @@ const Slider: React.FC = () => {
         <SliderTemplate
           images={slides}
           autoplayDelay={AUTOPLAY_MS}
-          loop={true}
+          loop
           spaceBetween={0}
           className={styles.container}
         />
@@ -31,5 +30,3 @@ const Slider: React.FC = () => {
     </section>
   );
 };
-
-export default React.memo(Slider);

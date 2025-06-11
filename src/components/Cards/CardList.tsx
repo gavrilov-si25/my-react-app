@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { memo, useState, useEffect, useMemo } from 'react';
 import { useFetch } from '../../hooks/useFetch';
-import Card from './Card';
-import Feature from './Feature';
+import { CardData, RawCard } from '../../types/post';
+import { Card } from './Card';
+import { Feature } from './Feature';
 import heroImage from '/images/hero-image.png';
 import styles from './CardList.module.css';
-import { CardData, RawCard } from '../../types/post.ts';
 
-interface CardListProps {
+export interface CardListProps {
   limit?: number;
 }
 
 const DEFAULT_CARD_LIMIT = 3;
 
-const CardList: React.FC<CardListProps> = React.memo(({ limit = DEFAULT_CARD_LIMIT }) => {
+export const CardList = memo(function CardList({ limit = DEFAULT_CARD_LIMIT }: CardListProps): React.ReactElement {
   const {
     data: rawCards,
     loading,
@@ -45,10 +45,16 @@ const CardList: React.FC<CardListProps> = React.memo(({ limit = DEFAULT_CARD_LIM
   }, [rawCards, loading, activeIdx]);
 
   if (loading && (!rawCards || rawCards.length === 0)) {
-    return <p className={styles.status}>Loading..</p>;
+    return <p className={styles.status}>Loading…</p>;
   }
-  if (error) return <p className={styles.status}>Error: {error}</p>;
-  if (!rawCards || rawCards.length === 0) return <p className={styles.status}>No cards</p>;
+
+  if (error) {
+    return <p className={styles.status}>Error: {error}</p>;
+  }
+
+  if (!rawCards || rawCards.length === 0) {
+    return <p className={styles.status}>No cards</p>;
+  }
 
   const safeIdx = Math.min(activeIdx, cards.length - 1);
 
@@ -58,12 +64,10 @@ const CardList: React.FC<CardListProps> = React.memo(({ limit = DEFAULT_CARD_LIM
         <Card data={cards[safeIdx]} />
       </div>
       <div className={styles.featuresSlider}>
-        {cards.map((c, i) => (
-          <Feature key={c.id} data={c} active={i === safeIdx} onClick={handlers[i]} />
+        {cards.map((card, i) => (
+          <Feature key={card.id} data={card} active={i === safeIdx} onClick={handlers[i]} />
         ))}
       </div>
     </div>
   );
 });
-
-export default CardList;

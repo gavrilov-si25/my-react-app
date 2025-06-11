@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet } from 'react-router';
 import { Main } from './Main';
 
@@ -11,5 +10,3 @@ export const Layout = (): React.ReactElement => {
     </div>
   );
 };
-
-export default Layout;

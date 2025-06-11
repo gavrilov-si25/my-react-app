@@ -1,13 +1,10 @@
-import React from 'react';
-import PageTemplate from '../components/PageTemplate';
-import Error from '../components/Error/Error';
+import { PageTemplate } from '../components/PageTemplate';
+import { Error } from '../components/Error/Error';
 
 type NotFoundPageProps = React.ComponentProps<typeof PageTemplate>;
 
-const NotFoundPage: React.FC<NotFoundPageProps> = ({ onLoginClick, onSignUpClick }) => (
+export const NotFoundPage = ({ onLoginClick, onSignUpClick }: NotFoundPageProps): React.ReactElement => (
   <PageTemplate onLoginClick={onLoginClick} onSignUpClick={onSignUpClick}>
     <Error />
   </PageTemplate>
 );
-
-export default NotFoundPage;
