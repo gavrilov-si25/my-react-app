@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 
 .left {
@@ -21,17 +21,17 @@
 }
 
 .logo {
-  margin: 40px 0 20px 0;
+  margin: 2.5rem 0 1.25rem 0;
 }
 
 .text {
-  font-size: 16px;
+  font-size: 1rem;
   color: #707070;
   margin: 0 0 42px;
 }
 
 .text:last-of-type {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   color: #000;
   margin: 0;
@@ -47,7 +47,7 @@
   color: #000;
   text-decoration: none;
   margin: 0 0px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -66,5 +66,17 @@
     flex-direction: column;
     text-align: center;
     gap: 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .link:nth-child(1)::after {
+    content: ' | ';
+    margin-left: 0rem;
+    margin-right: 0rem;
   }
 }

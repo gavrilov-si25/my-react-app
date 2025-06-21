@@ -33,3 +33,25 @@
   color: #666;
   text-align: left;
 }
+
+@media (max-width: 360px) {
+  .featureTitle {
+    font-size: 1rem;
+  }
+  .featureText {
+    font-size: 0.75rem;
+  }
+  .feature {
+    flex: 1 1 100%;
+    margin: 0 auto 1rem;
+  }
+}
+
+@media (max-width: 270px) {
+  .featureTitle,
+  .featureText {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}

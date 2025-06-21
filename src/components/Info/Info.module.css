@@ -14,3 +14,9 @@
   text-decoration: none;
   color: #3d1edd;
 }
+
+@media (max-width: 360px) {
+  .titleLink {
+    font-size: 1.5rem;
+  }
+}
