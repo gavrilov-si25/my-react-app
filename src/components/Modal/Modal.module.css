@@ -14,7 +14,6 @@
 .modal {
   background: white;
   padding: 1.875rem;
-  border-radius: 0.75rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   width: 90%;
   max-width: 25rem;
@@ -48,7 +47,6 @@
   padding: 0.625rem;
   font-size: 0.875rem;
   border: 1px solid #ddd;
-  border-radius: 0.375rem;
   box-sizing: border-box;
 }
 
@@ -67,7 +65,6 @@
   color: white;
   background-color: #3d1edd;
   border: none;
-  border-radius: 0.375rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -84,7 +81,6 @@
   color: #333;
   background-color: #f1f1f1;
   border: none;
-  border-radius: 0.375rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

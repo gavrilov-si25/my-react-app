@@ -1,41 +1,37 @@
 .cardList {
-  background-color: #fff;
-  padding: 1.25rem;
+  background-color: #f8f8ff;
+  padding: 1.5rem 0;
   text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .status {
-  text-align: center;
   font-size: 1rem;
-  color: #666;
+  color: #666666;
   margin: 1.25rem 0;
 }
 
 .cardDisplay {
-  margin-bottom: 1.875rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
 }
 
 .featuresSlider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
   max-width: 81.25rem;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 1280px) {
-  .cardDisplay {
-    margin: 2rem;
-  }
 }
 
 @media (max-width: 768px) {
   .featuresSlider {
-    flex-direction: column;
-    padding: 0 1.25rem;
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
   .cardDisplay {
-    margin: 1rem;
+    padding: 0 1rem;
+    margin: 1rem 0;
   }
 }

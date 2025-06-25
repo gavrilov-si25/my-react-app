@@ -5,7 +5,7 @@
 
 .content {
   width: 90%;
-  max-width: 75rem;
+  max-width: 79.25rem;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
 }
 
 .title {
-  font-size: 1.875rem;
+  font-size: 2rem;
   color: #080305;
   margin-bottom: 1.25rem;
 }

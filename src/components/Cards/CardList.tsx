@@ -3,7 +3,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { CardData, RawCard } from '../../types/post';
 import { Card } from './Card';
 import { Feature } from './Feature';
-import heroImage from '/images/hero-image.png';
+import infoImage from '/images/info-image.png';
 import styles from './CardList.module.css';
 
 export interface CardListProps {
@@ -27,7 +27,7 @@ export const CardList = memo(function CardList({ limit = DEFAULT_CARD_LIMIT }: C
             id: item.id,
             title: item.title,
             body: item.body,
-            image: heroImage,
+            image: infoImage,
           }))
         : [],
     [rawCards],

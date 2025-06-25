@@ -1,39 +1,60 @@
 .card {
-  max-width: 75rem;
+  max-width: 79.25rem;
   margin: 0 auto;
-  background-color: #f9f9f9;
-  padding: 1.25rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 0 0rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.25rem);
 }
 
 .cardImage {
-  margin-top: 1.25rem;
+  display: block;
+  margin: 1rem auto;
   max-width: 100%;
   height: auto;
-  margin-bottom: 1.25rem;
 }
 
 .cardTitle {
-  font-size: 1.5rem;
-  color: #3d1edd;
-  margin-bottom: 0.625rem;
+  font-size: 36px;
+  font-weight: 700;
+  color: #080305;
+  margin-bottom: 1rem;
+  font-family: Inter, sans-serif;
+  line-height: 1.2;
 }
 
 .cardDescription {
   font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .cardTitle {
+    font-size: 1.75rem;
+  }
+  .cardDescription {
+    font-size: 0.875rem;
+  }
 }
 
 @media (max-width: 360px) {
   .cardTitle {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
-
   .cardDescription {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -41,7 +62,6 @@
   .cardTitle,
   .cardDescription {
     overflow-wrap: break-word;
-    word-wrap: break-word;
     hyphens: auto;
   }
 }

@@ -5,7 +5,7 @@
 
 .content {
   width: 90%;
-  max-width: 75rem;
+  max-width: 79.25rem;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -27,14 +27,18 @@
 .button {
   display: inline-block;
   padding: 0.625rem 1.25rem;
+  border-radius: 0.25rem;
   background-color: #3d1edd;
   color: #fff;
-  border-radius: 0.25rem;
+  border-radius: 0;
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
   width: auto;
   max-width: 10rem;
+  transition: background-color 0.3s;
   text-align: center;
 }
 
